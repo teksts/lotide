@@ -34,5 +34,3 @@ const flatten = function(arr) {
   }
   return output;
 };
-
-console.log(flatten([1, 2, [3, 4]]));
