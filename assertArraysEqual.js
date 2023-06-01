@@ -8,8 +8,12 @@ const assertEqual = function(actual, expected) {
 
 const assertArraysEqual = function(actual, expected) {
   for (let i = 0; i < actual.length; i++) {
-    assertEqual(actual[i], expected[i]);
+    if (!eqArrays(actual, expected)) {
+      console.log(`🛑 Assertion failed: [${actual}] !== [${expected}]`);
+      break;
+    }
   }
+  console.log(`✅ Assertion passed: [${actual}] === [${expected}]`);
 };
 
 const eqArrays = function(actual, expected) {
