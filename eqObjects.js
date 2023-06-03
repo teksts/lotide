@@ -66,10 +66,14 @@ const eqObjects = function(obj1, obj2) {
       if (!eqArrays(obj1[i], obj2[i])) {
         return false;
       }
-      if (typeof obj1[i] === "object") {
-        return eqObjects(obj1[i], obj2[i]);
+    } else if (typeof obj1[i] === "object") { // This should be checked later to make sure obj2 doesn't have to be type-checked as well
+      console.log("type checked!");
+      if (!eqObjects(obj1[i], obj2[i])) {
+        return false;
       }
     } else if (obj1[i] !== obj2[i]) {
+      console.log(i);
+      assertEqual(obj1[i], obj2[i]);
       return false;
     }
   }
@@ -90,9 +94,11 @@ console.log(eqObjects(multiColorShirtObject  , anotherMultiColorShirtObject)); /
 const longSleeveMultiColorShirtObject = { size: "medium", colors: ["red", "blue"], sleeveLength: "long" };
 console.log(eqObjects(multiColorShirtObject  , longSleeveMultiColorShirtObject)); // => false
 
-const shirtWithNestedObjects = { color: "red", size: "medium", manufacturer: {name: 'TAPOUT', locations: ['Vancouver', 'Toronto']} };
-const anotherShirtWithNestedObjects = { color: "red", size: "medium", manufacturer: {name: 'Burberry', locations: ['Vancouver', 'Toronto']} };
+const shirtWithNestedObjects = { color: "red", size: "medium", manufacturer: {name: 'TAPOUT', locations: ['Vancouver', 'Toronto']}, price: 100 };
+const shirtWithNestedObjectsDiffPrice = { color: "red", size: "medium", manufacturer: {name: 'TAPOUT', locations: ['Vancouver', 'Toronto']}, price: 80 };
+const anotherShirtWithNestedObjects = { color: "red", size: "medium", manufacturer: {name: 'Burberry', locations: ['Vancouver', 'Toronto']}, price: 1000 };
 const shirtWithNestedEmptyObjects = { color: "red", size: "medium", manufacturer: {} };
 console.log(eqObjects(shirtWithNestedObjects, shirtWithNestedObjects)); // => true
+console.log(eqObjects(shirtWithNestedObjects, shirtWithNestedObjectsDiffPrice)); // => false
 console.log(eqObjects(shirtWithNestedObjects, anotherShirtWithNestedObjects)); // => false
 console.log(eqObjects(shirtWithNestedObjects, shirtWithNestedEmptyObjects)); // => false
