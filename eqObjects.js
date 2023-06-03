@@ -92,5 +92,7 @@ console.log(eqObjects(multiColorShirtObject  , longSleeveMultiColorShirtObject))
 
 const shirtWithNestedObjects = { color: "red", size: "medium", manufacturer: {name: 'TAPOUT', locations: ['Vancouver', 'Toronto']} };
 const anotherShirtWithNestedObjects = { color: "red", size: "medium", manufacturer: {name: 'Burberry', locations: ['Vancouver', 'Toronto']} };
+const shirtWithNestedEmptyObjects = { color: "red", size: "medium", manufacturer: {} };
 console.log(eqObjects(shirtWithNestedObjects, shirtWithNestedObjects)); // => true
 console.log(eqObjects(shirtWithNestedObjects, anotherShirtWithNestedObjects)); // => false
+console.log(eqObjects(shirtWithNestedObjects, shirtWithNestedEmptyObjects)); // => false
