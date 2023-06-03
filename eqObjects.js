@@ -67,12 +67,10 @@ const eqObjects = function(obj1, obj2) {
         return false;
       }
     } else if (typeof obj1[i] === "object") { // This should be checked later to make sure obj2 doesn't have to be type-checked as well
-      console.log("type checked!");
       if (!eqObjects(obj1[i], obj2[i])) {
         return false;
       }
     } else if (obj1[i] !== obj2[i]) {
-      console.log(i);
       assertEqual(obj1[i], obj2[i]);
       return false;
     }
@@ -98,7 +96,11 @@ const shirtWithNestedObjects = { color: "red", size: "medium", manufacturer: {na
 const shirtWithNestedObjectsDiffPrice = { color: "red", size: "medium", manufacturer: {name: 'TAPOUT', locations: ['Vancouver', 'Toronto']}, price: 80 };
 const anotherShirtWithNestedObjects = { color: "red", size: "medium", manufacturer: {name: 'Burberry', locations: ['Vancouver', 'Toronto']}, price: 1000 };
 const shirtWithNestedEmptyObjects = { color: "red", size: "medium", manufacturer: {} };
-console.log(eqObjects(shirtWithNestedObjects, shirtWithNestedObjects)); // => true
+const extremelyNestedShirt = { color: "red", size: "medium", foo: { bar: { whiz: { bang: "hello"} } } };
+const otherExtremelyNestedShirt = { color: "red", size: "medium", foo: { bar: { whiz: { bang: "goodbye"} } } };
 console.log(eqObjects(shirtWithNestedObjects, shirtWithNestedObjectsDiffPrice)); // => false
 console.log(eqObjects(shirtWithNestedObjects, anotherShirtWithNestedObjects)); // => false
 console.log(eqObjects(shirtWithNestedObjects, shirtWithNestedEmptyObjects)); // => false
+console.log(eqObjects(extremelyNestedShirt, extremelyNestedShirt)); // => true
+console.log(eqObjects(extremelyNestedShirt, otherExtremelyNestedShirt)); // => false
+
