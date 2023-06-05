@@ -1,7 +1,8 @@
 {
-  "name": "lotide",
+  "name": "@teksts/lotide",
   "version": "1.0.0",
-  "description": "",
+  "description": "A mini-copy of the lotide library, made for didactic purposes. Work in 
+progress, not production ready.",
   "main": "assertArraysEqual.js",
   "directories": {
     "test": "test"
@@ -9,7 +10,10 @@
   "scripts": {
     "test": "mocha"
   },
-  "author": "",
+  "author": {
+    "name": "Mark Egelhoff",
+    "email": "mark.egelhoff1@gmail.com",
+    "url": "https://github.com/teksts"
   "license": "ISC",
   "devDependencies": {
     "chai": "^4.3.7",
