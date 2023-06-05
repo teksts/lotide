@@ -47,3 +47,5 @@ const expectedTestResult = {
 
 console.log(countLetters(testString));
 console.log(expectedTestResult);
+
+module.exports = countLetters;
