@@ -1,4 +1,4 @@
-const middle = function (arr) {
+const middle = function(arr) {
   if (arr.length <= 2) {
     return [];
   }

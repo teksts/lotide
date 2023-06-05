@@ -1,9 +1,45 @@
+// DEPENDENCIES
+const assert = require('chai').assert;
 const tail = require('../tail');
-const assertEqual = require('../assertEqual');
 
+// TEST CONSTANTS
+const emptyArray = [];
+const lengthOneArray = ["foo"];
+const longArray = ["foo", "bar", "whiz", "bang"];
 
-// Test Case: Check the original array
-const words = ["Yo Yo", "Lighthouse", "Labs"];
-tail(words); // no need to capture the return value since we are not checking it
-assertEqual(words.length, 3); // original array should still have 3 elements!
-assertEqual(words[1], tail(words)[0]);
+// TESTS
+describe("#tail", () => {
+  it(`returns [] for ${emptyArray}`, () => {
+    assert.notDeepEqual(tail(emptyArray), ["foo"]);
+  });
+});
+
+describe("#tail", () => {
+  it(`returns [] for ${emptyArray}`, () => {
+    assert.deepEqual(tail(emptyArray), []);
+  });
+});
+
+describe("#tail", () => {
+  it(`returns [] for ${lengthOneArray}`, () => {
+    assert.notDeepEqual(tail(lengthOneArray), ["foo"]);
+  });
+});
+
+describe("#tail", () => {
+  it(`returns [] for ${lengthOneArray}`, () => {
+    assert.deepEqual(tail(lengthOneArray), []);
+  });
+});
+
+describe("#tail", () => {
+  it(`returns [] for ${emptyArray}`, () => {
+    assert.notDeepEqual(tail(longArray), ["foo", "bar", "whiz", "bang"]);
+  });
+});
+
+describe("#tail", () => {
+  it(`returns ["bar", "whiz", "bang"] for ${longArray}`, () => {
+    assert.deepEqual(tail(longArray), ["bar", "whiz", "bang"]);
+  });
+});
